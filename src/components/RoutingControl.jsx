@@ -11,16 +11,17 @@ const RoutingControl = ({ onRoute }) => {
     setError("");
     setIsLoading(true);
     
+    //que ambas direcciones estén
     if (!startAddress || !endAddress) {
       setError("Introduce ambas direcciones.");
       setIsLoading(false);
       return;
     }
 
-    try {
+    try { //convierto a coordenadas
       const startRes = await geocode(startAddress);
       const endRes = await geocode(endAddress);
-
+        //extraigo las coordenadas
       const start = startRes.features[0]?.geometry.coordinates;
       const end = endRes.features[0]?.geometry.coordinates;
 
@@ -29,20 +30,20 @@ const RoutingControl = ({ onRoute }) => {
         setIsLoading(false);
         return;
       }
-
+      //obtengo la ruta
       const waypoints = `${start[1]},${start[0]}|${end[1]},${end[0]}`;
       const result = await getRoute(waypoints);
 
       if (result.features?.length > 0) {
         let coordinates = [];
-
+        //extraigo las coordenadas de la ruta
         const geometry = result.features[0].geometry;
         if (geometry.type === "LineString") {
           coordinates = geometry.coordinates.map(([lon, lat]) => [lat, lon]);
         } else if (geometry.type === "MultiLineString") {
           coordinates = geometry.coordinates.flat().map(([lon, lat]) => [lat, lon]);
         }
-
+        //y las calculo a km
         const distanceMeters = result.features[0].properties.distance;
         const distanceKm = (distanceMeters / 1000).toFixed(2);
 
@@ -76,27 +77,19 @@ const RoutingControl = ({ onRoute }) => {
           value={startAddress} 
           onChange={(e) => setStartAddress(e.target.value)} 
           placeholder="Dirección de inicio"
-          style={{ padding: '8px', width: '200px' }}
+
         />
         <input 
           type="text" 
           value={endAddress} 
           onChange={(e) => setEndAddress(e.target.value)} 
           placeholder="Dirección de destino"
-          style={{ padding: '8px', width: '200px' }}
+
         />
       </div>
       <button 
         onClick={handleRoute}
         disabled={isLoading}
-        style={{
-          padding: '8px 16px',
-          background: isLoading ? '#ccc' : '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        }}
       >
         {isLoading ? 'Buscando ruta...' : 'Obtener ruta'}
       </button>

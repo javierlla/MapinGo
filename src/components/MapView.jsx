@@ -5,20 +5,20 @@ import RoutingControl from './RoutingControl';
 import GeocodeSearch from './GeocodeSearch';
 import 'leaflet/dist/leaflet.css';
 
-delete L.Icon.Default.prototype._getIconUrl;
+/* delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
+}); */
 
 const API_KEY = import.meta.env.VITE_GEOAPIFY_KEY || 'd38324b86c1e4889b8ed0c95fb1b31cb';
 
 function MapView({ routeCoordinates, setRouteCoordinates, routeDistance, setRouteDistance, zoom = 13 }) { 
-  const [center, setCenter] = useState([43.2630, -2.9350]);
+  const [center, setCenter] = useState([43.2630, -2.9350]); //BILBAO
   const mapRef = useRef();
 
-  useEffect(() => {
+  useEffect(() => { //centrar el mapa a la ruta
     if (routeCoordinates.length > 0 && mapRef.current) {
       const bounds = L.latLngBounds(routeCoordinates);
       mapRef.current.fitBounds(bounds, { padding: [50, 50] });
