@@ -59,48 +59,29 @@ const RoutingControl = ({ onRoute }) => {
   };
 
   return (
-    <div style={{
-      position: 'absolute',
-      top: '10px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      zIndex: 1000,
-      background: 'white',
-      padding: '10px',
-      borderRadius: '8px',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-    }}>
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+    <div className="routing-control">
+      <div className="routing-inputs">
         <input 
           type="text" 
           value={startAddress} 
           onChange={(e) => setStartAddress(e.target.value)} 
           placeholder="Dirección de inicio"
-          style={{ padding: '8px', width: '200px' }}
         />
         <input 
           type="text" 
           value={endAddress} 
           onChange={(e) => setEndAddress(e.target.value)} 
           placeholder="Dirección de destino"
-          style={{ padding: '8px', width: '200px' }}
         />
       </div>
       <button 
         onClick={handleRoute}
         disabled={isLoading}
-        style={{
-          padding: '8px 16px',
-          background: isLoading ? '#ccc' : '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        }}
+        className="routing-button"
       >
         {isLoading ? 'Buscando ruta...' : 'Obtener ruta'}
       </button>
-      {error && <p style={{ color: "red", marginTop: '10px' }}>{error}</p>}
+      {error && <p className="routing-error">{error}</p>}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import RoutingControl from './RoutingControl';
 import GeocodeSearch from './GeocodeSearch';
 import 'leaflet/dist/leaflet.css';
 
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -39,17 +40,7 @@ function MapView({ routeCoordinates, setRouteCoordinates, routeDistance, setRout
       }} />
       
       {routeDistance && (
-        <div style={{
-          position: 'absolute',
-          top: '70px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 1000,
-          background: 'white',
-          padding: '10px',
-          borderRadius: '8px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-        }}>
+        <div className="map-distance-box">
           Distancia total: {routeDistance} km
         </div>
       )}
@@ -69,18 +60,8 @@ function MapView({ routeCoordinates, setRouteCoordinates, routeDistance, setRout
           <Popup>Ubicación actual</Popup>
         </Marker>
         
-        {routeCoordinates.length > 0 ? (
+        {routeCoordinates.length > 0 && (
           <Polyline positions={routeCoordinates} color="blue" weight={5} />
-        ) : (
-          <div style={{
-            position: 'absolute', 
-            top: '20px', 
-            left: '20px', 
-            color: 'red', 
-            zIndex: 1000
-          }}>
-            No se ha dibujado ruta aún.
-          </div>
         )}
       </MapContainer>
     </>
@@ -88,3 +69,4 @@ function MapView({ routeCoordinates, setRouteCoordinates, routeDistance, setRout
 }
 
 export default MapView;
+
