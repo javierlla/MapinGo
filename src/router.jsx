@@ -3,6 +3,7 @@ import Root from './pages/Root';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 import MapPage from './pages/MapPage'; 
+import './App.css';
 
 const router = createBrowserRouter([
   {

@@ -1,42 +1,145 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+h1, h2, h4 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/*NAVEGACIÓN*/
+nav {
+  background-color: #333;
+  padding: 1rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+
+div {
+  box-sizing: border-box;
+}
+
+/*MAPA*/
+.leaflet-container {
+  height: 70vh !important;
+  width: 90% !important;
+  margin: 1rem auto;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}
+
+/*CUADRO DE DISTANCIA */
+.map-distance-box {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* BUSCADOR DE DIRECCIONES*/
+.geocode-search {
+  background-color: #fff;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.geocode-search input {
+  width: calc(100% - 130px);
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.geocode-search button {
+  padding: 0.5rem 0.8rem;
+  margin-right: 0.3rem;
+  cursor: pointer;
+}
+
+.geocode-search .error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.favorites ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.favorites li {
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+/*FORMULARIO DE RUTA  */
+.routing-control {
+  background-color: #fff;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.routing-inputs input {
+  width: calc(100% - 10px);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.routing-button {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.routing-error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+
+/* FONDO DE PANTALLA */
+.map-page-wrapper {
+  background-color: #e9ecef;
+  padding-bottom: 2rem;
+}
+
+
+
+@media (min-width: 768px) {
+  .geocode-search,
+  .routing-control {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
   }
-  to {
-    transform: rotate(360deg);
+
+  .geocode-search input {
+    width: calc(60% - 10px);
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .routing-inputs input {
+    width: 100%;
   }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .routing-button {
+    width: auto;
+  }
 }

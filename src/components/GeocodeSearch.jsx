@@ -35,6 +35,13 @@ function GeocodeSearch({ onResult }) {
     localStorage.setItem("favorites", JSON.stringify(updated));
   };
 
+  const removeFavorite = (favToRemove) => {
+    const updated = favorites.filter(fav => fav !== favToRemove);
+    setFavorites(updated);
+    localStorage.setItem("favorites", JSON.stringify(updated));
+  };
+  
+
   const selectFavorite = (fav) => {
     setQuery(fav);
     setTimeout(() => handleSearch(), 0);
@@ -56,11 +63,12 @@ function GeocodeSearch({ onResult }) {
         <div className="favorites">
           <h4>Favoritos:</h4>
           <ul>
-            {favorites.map((fav, i) => (
-              <li key={i} onClick={() => selectFavorite(fav)}>
-                {fav}
-              </li>
-            ))}
+          {favorites.map((fav, i) => (
+          <li key={i}>
+            <span onClick={() => selectFavorite(fav)} style={{ cursor: 'pointer' }}>{fav}</span>
+            <button onClick={() => removeFavorite(fav)} style={{ marginLeft: '10px' }}>🗑️</button>
+          </li>
+          ))}
           </ul>
         </div>
       )}
