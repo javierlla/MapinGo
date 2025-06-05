@@ -27,7 +27,7 @@ Este proyecto es una aplicación React que utiliza **Leaflet** junto con la API 
 4. Crea un archivo `.env` en la raíz del proyecto y añade la siguiente línea:
 
 ```env
-VITE_GEOAPIFY_KEY=tu_clave_api_aqui
+VITE_GEOAPIFY_KEY=tu_clave_api_aqui```
 
 ⚠️ Asegúrate de reiniciar el servidor de desarrollo si ya estaba corriendo, para que lea el archivo .env.
 📁 Estructura de Archivos Clave
