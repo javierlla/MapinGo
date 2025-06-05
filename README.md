@@ -27,7 +27,7 @@ Este proyecto es una aplicación React que utiliza **Leaflet** junto con la API 
 4. Crea un archivo `.env` en la raíz del proyecto y añade la siguiente línea:
 
 ```env
-VITE_GEOAPIFY_KEY=tu_clave_api_aqui```
+VITE_GEOAPIFY_KEY=tu_clave_api_aqui
 
 ⚠️ Asegúrate de reiniciar el servidor de desarrollo si ya estaba corriendo, para que lea el archivo .env.
 📁 Estructura de Archivos Clave
@@ -46,7 +46,7 @@ VITE_GEOAPIFY_KEY=tu_clave_api_aqui```
 
 🚀 Instalación
 
-    Clona el repositorio:
+Clona el repositorio:
 
 git clone https://github.com/javierlla/MapinGo.git
 cd MapinGo
@@ -59,7 +59,7 @@ Añade tu clave API en el .env como se explicó arriba.
 
 Ejecuta el proyecto:
 
-    npm run dev
+npm run dev
 
 🌐 Uso
 
@@ -68,3 +68,4 @@ Ejecuta el proyecto:
     Accede a /mapa para ver y usar el mapa interactivo.
 
     Puedes buscar direcciones, guardarlas como favoritas y trazar rutas.
+
